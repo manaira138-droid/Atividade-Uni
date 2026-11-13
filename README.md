@@ -1,34 +1,50 @@
-# Prime Conecta — demo Android
+# Prime Conecta V3 — Administração e contas individuais
 
-Protótipo acadêmico do Manaíra Prime Hotel. Dados e colaboradores fictícios; o aplicativo não usa backend e as tarefas reiniciam ao fechar/reiniciar o aplicativo (estado em memória).
+Aplicativo demonstrativo Android (Expo SDK 54). A base de colaboradores começa **vazia**, exceto pelo acesso administrativo inicial solicitado.
 
-## Rodar no Android com Expo Go (sem APK)
+## Acesso inicial
 
-1. Instale **Node.js** no computador.
-2. Abra a pasta deste projeto no VS Code e execute `npm install`.
-3. Execute `npx expo start`.
-4. Instale **Expo Go** no Android e escaneie o QR code (computador e celular na mesma rede).
+- Usuário: `Admin`
+- Senha: `admin123`
 
-## Gerar APK instalável
+**Atenção:** essa é uma credencial de demonstração, conhecida e fraca. Altere a senha em **Perfil** assim que entrar. Não use dados reais ou confidenciais nesta versão. O armazenamento é local e o hash SHA-256 simples não é adequado como solução completa de autenticação em produção. Para uso real entre celulares, substituir por autenticação segura em servidor (ex.: Supabase Auth) e regras de acesso no banco.
 
-1. Crie uma conta em https://expo.dev/ e instale a CLI: `npm install -g eas-cli`.
-2. Faça login com `eas login`.
-3. Dentro da pasta, execute `eas build -p android --profile preview`.
-4. Se for solicitado, vincule ou crie o projeto Expo e permita gerar a chave Android.
-5. Quando a compilação terminar, baixe o APK pelo link do Expo, transfira para o celular e instale-o (autorize a instalação desse arquivo, se necessário).
+## Recursos
 
-`eas.json` já está configurado para produzir APK, não AAB.
+- Login individual com sessão local, sem personagens pré-cadastrados.
+- Gerência/Admin: cadastramento, edição, desativação e liberação de login dos colaboradores; definição de usuário, senha, departamento e perfil.
+- Encarregado: cadastro e edição de colaboradores do próprio setor, sem definir credenciais; gerência libera os logins.
+- Colaborador: visualiza demandas do setor e as suas, sem acesso administrativo.
+- Cadastro de demandas, início, envio à validação, conclusão, reabertura, histórico e tempo em execução.
+- Tela **Operação** e retorno ao Início pelo menu inferior.
+- Passagem de turno, painel gerencial, departamentos e mudança de senha.
+- Desativação preserva histórico e tarefas, sem apagar os registros.
 
-## Roteiro de apresentação
+## Instalar em projeto Expo existente
 
-- Selecione **Recepção** → **+ Nova** → "Reparar fechadura" → local "Quarto 205" → destino **Manutenção** → prioridade **Urgente** → Cadastre.
-- Troque o setor para **Manutenção**. Abra a solicitação, toque em **Iniciar tarefa** e depois **Marcar concluída**.
-- Troque para **Recepção** para ver o status atualizado.
-- Mostre o **Painel** e a contagem por departamento.
+**Faça backup**. Extraia o ZIP. Copie o conteúdo da pasta `Prime_Conecta_V3` para sua pasta `Prime_Conecta_Android_Demo`, **preservando seu `app.json`, `eas.json` e `.git` existentes**. Os arquivos `App.tsx`, `package.json`, `tsconfig.json`, `assets/` e `.gitignore` podem ser substituídos. Não substitua `app.json` ou `eas.json` se já estão vinculados ao seu projeto EAS.
 
-### Limitações desta demonstração
+```powershell
+npm.cmd install
+npx.cmd expo install --fix
+npx.cmd expo start --clear
+```
 
-- Os perfis são simulados e não há autenticação real.
-- Não há sincronização entre celulares. É um protótipo para demonstrar no mesmo aparelho.
-- As alterações só existem durante a sessão, sem persistência no dispositivo.
-- Não use dados pessoais reais de hóspedes nesta versão.
+Para APK, depois de testar no Expo Go:
+
+```powershell
+npx.cmd eas-cli build -p android --profile preview
+```
+
+Se aparecer falha do Git na sua instalação, em **uma mesma janela** de PowerShell:
+
+```powershell
+$env:EAS_NO_VCS="1"
+npx.cmd eas-cli build -p android --profile preview
+```
+
+## Importante
+
+Esta versão **não sincroniza dados entre dispositivos**. Cada Android terá seu próprio armazenamento e seus próprios colaboradores, tarefas e senhas. Para operação multiusuário real, é necessária uma API, autenticação gerenciada no servidor, regras por função, sincronização, auditoria e backups.
+
+A versão V2 usava uma chave local diferente; os dados de demonstração da V2 não são importados automaticamente. Esta V3 inicia sem colaboradores e sem tarefas cadastradas, conforme solicitado.

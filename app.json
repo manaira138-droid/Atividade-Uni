@@ -2,16 +2,20 @@
   "expo": {
     "name": "Prime Conecta",
     "slug": "prime-conecta-demo",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "backgroundColor": "#F4F7FB",
+    "backgroundColor": "#F4F6FA",
+    "icon": "./assets/icon.png",
     "android": {
       "package": "com.manairaprime.primeconectademo",
+      "versionCode": 3,
       "adaptiveIcon": {
-        "backgroundColor": "#142F4B"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#071426"
       }
     },
+    "owner": "vitormatiads20",
     "extra": {
       "eas": {
         "projectId": "10e586a1-dc7d-486a-9e50-345d0443ca34"

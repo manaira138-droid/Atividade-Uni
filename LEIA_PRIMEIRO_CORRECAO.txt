@@ -1,0 +1,16 @@
+PRIME CONECTA V3.0.1 — CORREÇÃO DIAGNÓSTICA
+
+Alterações:
+- Substituídos os pesos de fonte não suportados 850 por 800.
+- Adicionado registro de erro de inicialização no console (quando ocorrer).
+
+INSTALAÇÃO SEM PERDER SUA CONFIGURAÇÃO EXPO/GITHUB:
+1. Feche o Expo no terminal (Ctrl+C).
+2. Faça cópia de segurança do App.tsx atual.
+3. Copie apenas o App.tsx deste pacote para a pasta do seu projeto, substituindo o antigo.
+4. Execute npx.cmd tsc --noEmit. O comando deve retornar sem erros.
+5. Execute npx.cmd expo start --clear; abra pelo Expo Go.
+6. Se continuar falhando, copie a mensagem de erro do terminal (sobretudo Android Bundling failed ou ERROR).
+
+Esta correção remove erros identificados no código-fonte, mas não foi testada em aparelho Android aqui.
+Não substitua app.json, eas.json, .git nem apague dados locais.
