@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Prime Conecta",
+    "slug": "prime-conecta-demo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F4F7FB",
+    "android": {
+      "package": "com.manairaprime.primeconectademo",
+      "adaptiveIcon": {
+        "backgroundColor": "#142F4B"
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "10e586a1-dc7d-486a-9e50-345d0443ca34"
+      }
+    }
+  }
+}
